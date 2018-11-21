@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:gravity="center|clip_horizontal"
+    android:orientation="vertical"
+    tools:context=".Register">
+
+
+    <EditText
+        android:id="@+id/txtEmailSignUp"
+        android:layout_width="296dp"
+        android:layout_height="41dp"
+        android:layout_gravity="fill_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="34dp"
+        android:background="@color/white"
+        android:cursorVisible="false"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:ems="10"
+        android:freezesText="true"
+        android:hapticFeedbackEnabled="false"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textAllCaps="false"
+        android:textColorLink="@android:color/background_light"
+        android:textIsSelectable="false"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:id="@+id/txtPasswordSignUp"
+        android:layout_width="296dp"
+        android:layout_height="41dp"
+        android:layout_gravity="fill_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="34dp"
+        android:background="@color/white"
+        android:cursorVisible="false"
+        android:drawableLeft="@drawable/ic_action_lock"
+        android:ems="10"
+        android:freezesText="true"
+        android:hapticFeedbackEnabled="false"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:password="true"
+        android:textAllCaps="false"
+        android:textColorLink="@android:color/background_light"
+        android:textIsSelectable="false"
+        android:textStyle="normal|bold" />
+
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="34dp"
+        android:background="@color/white"
+        android:text="REGISTER"
+        android:textColor="@color/butoncolor"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:textColor="@color/colorPrimaryDark" />
+
+</LinearLayout>
