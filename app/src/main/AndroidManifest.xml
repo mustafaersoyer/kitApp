@@ -3,6 +3,7 @@
     package="com.example.mstfa.kitapp">
 
     <application
+        android:name=".AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register"></activity>
+        <activity android:name=".Yazarlar"></activity>
     </application>
 
 </manifest>

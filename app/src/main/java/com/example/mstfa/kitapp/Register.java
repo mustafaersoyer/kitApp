@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
     Button btnSignUp;
-    EditText txtEmailSignUp,txtPasswordSignUp;
+    EditText txtEmailSignUp,txtPasswordSignUp,txtPasswordSignUpAgain;
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +26,32 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         txtEmailSignUp = (EditText) findViewById(R.id.txtEmailSignUp);
         txtPasswordSignUp = (EditText) findViewById(R.id.txtPasswordSignUp);
+        txtPasswordSignUpAgain = (EditText) findViewById(R.id.txtPasswordSignUpAgain);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String emailAddr = txtEmailSignUp.getText().toString();
                 String pass = txtPasswordSignUp.getText().toString();
-                firebaseAuth.createUserWithEmailAndPassword(emailAddr, pass)
+                String passAgain = txtPasswordSignUpAgain.getText().toString();
+                 if(pass.equals(passAgain)){
+                    firebaseAuth.createUserWithEmailAndPassword(emailAddr, pass)
                         .addOnSuccessListener(Register.this, new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Toast.makeText(getApplicationContext(),"Kullanıcı Başarıyla Oluşturuldu.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Register Successfull", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(),"Kullanıcı Oluşturma Hatası!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), ""+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+                }
+                else{
+                     Toast.makeText(Register.this, "Passwords Not Same", Toast.LENGTH_SHORT).show();
+                 }
             }
         });
     }

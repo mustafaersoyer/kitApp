@@ -52,6 +52,27 @@
         android:textStyle="normal|bold" />
 
 
+    <EditText
+        android:id="@+id/txtPasswordSignUpAgain"
+        android:layout_width="296dp"
+        android:layout_height="41dp"
+        android:layout_gravity="fill_vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="34dp"
+        android:background="@color/white"
+        android:cursorVisible="false"
+        android:drawableLeft="@drawable/ic_action_lock"
+        android:ems="10"
+        android:freezesText="true"
+        android:hapticFeedbackEnabled="false"
+        android:hint="Password Again"
+        android:inputType="textPersonName"
+        android:password="true"
+        android:textAllCaps="false"
+        android:textColorLink="@android:color/background_light"
+        android:textIsSelectable="false"
+        android:textStyle="normal|bold" />
+
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="296dp"
