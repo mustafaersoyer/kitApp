@@ -2,12 +2,9 @@ package com.example.mstfa.kitapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.QuickContactBadge;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,41 +18,45 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Yazarlar extends AppCompatActivity {
-    TextView deneme1;
-    Button kitaplar;
+public class Paylasimlar extends AppCompatActivity {
+    TextView txtPaylasimBaslik,txtPaylasimKitapAdi,txtPaylasimAciklama;
+    Button btnYazarlar;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_yazarlar);
-        deneme1 = (TextView) findViewById(R.id.deneme1);
-        kitaplar = (Button) findViewById(R.id.button2);
+        setContentView(R.layout.activity_paylasimlar);
 
+        txtPaylasimAciklama = (TextView) findViewById(R.id.txtPaylasimAciklama);
+        txtPaylasimBaslik = (TextView) findViewById(R.id.txtPaylasimBaslik);
+        txtPaylasimKitapAdi = (TextView) findViewById(R.id.txtPaylasimKitapAdi);
+        btnYazarlar = (Button) findViewById(R.id.btnYazarlar);
 
-        kitaplar.setOnClickListener(new View.OnClickListener() {
+        btnYazarlar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Yazarlar.this,Kitaplar.class);
+                Intent i = new Intent(Paylasimlar.this,Yazarlar.class);
                 startActivity(i);
             }
         });
 
-
         StringRequest jsonForGetRequest = new StringRequest(
-                Request.Method.GET,"http://192.168.1.102:80/kitapp/yazar.php?",
+                Request.Method.GET,"http://192.168.1.102:80/kitapp/paylasim.php?",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject obj = new JSONObject(response);
                             JSONObject jsonBody = obj.getJSONObject("bilgi1");
-                            deneme1.setText(jsonBody.getString("yazarIsim"));
-                            Toast.makeText(Yazarlar.this, "onResponse", Toast.LENGTH_SHORT).show();
+                            txtPaylasimAciklama.setText(jsonBody.getString("pAciklama"));
+                            txtPaylasimKitapAdi.setText(jsonBody.getString("kitapAdi"));
+                            txtPaylasimBaslik.setText(jsonBody.getString("pBaslik"));
+                            Toast.makeText(Paylasimlar.this, "onResponse", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

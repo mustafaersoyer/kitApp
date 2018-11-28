@@ -11,20 +11,28 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/deneme1"
+            android:id="@+id/txtKitapAdi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="1dp" />
+            tools:layout_editor_absoluteY="16dp" />
 
-        <Button
-            android:id="@+id/button2"
+        <TextView
+            android:id="@+id/txtBaski"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kitaplar"
+            android:text="TextView"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="78dp" />
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/txtSayfaSayisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

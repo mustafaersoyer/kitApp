@@ -1,13 +1,7 @@
 package com.example.mstfa.kitapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.QuickContactBadge;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,40 +16,33 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class Yazarlar extends AppCompatActivity {
-    TextView deneme1;
-    Button kitaplar;
+public class Kitaplar extends AppCompatActivity {
+    TextView txtKitapAdi;
+    TextView txtSayfaSayisi;
+    TextView txtBaski;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_yazarlar);
-        deneme1 = (TextView) findViewById(R.id.deneme1);
-        kitaplar = (Button) findViewById(R.id.button2);
+        setContentView(R.layout.activity_kitaplar);
 
-
-        kitaplar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Yazarlar.this,Kitaplar.class);
-                startActivity(i);
-            }
-        });
-
-
+        txtKitapAdi = (TextView) findViewById(R.id.txtKitapAdi);
+        txtSayfaSayisi = (TextView) findViewById(R.id.txtSayfaSayisi);
+        txtBaski = (TextView) findViewById(R.id.txtBaski);
         StringRequest jsonForGetRequest = new StringRequest(
-                Request.Method.GET,"http://192.168.1.102:80/kitapp/yazar.php?",
+                Request.Method.GET,"http://192.168.1.102:80/kitapp/kitap.php?",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject obj = new JSONObject(response);
                             JSONObject jsonBody = obj.getJSONObject("bilgi1");
-                            deneme1.setText(jsonBody.getString("yazarIsim"));
-                            Toast.makeText(Yazarlar.this, "onResponse", Toast.LENGTH_SHORT).show();
+                            txtKitapAdi.setText(jsonBody.getString("kitapAdi"));
+                            txtSayfaSayisi.setText(jsonBody.getString("kitapSayfaSayisi"));
+                            txtBaski.setText(jsonBody.getString("kitapBaski"));
+                            Toast.makeText(Kitaplar.this, "onResponse", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -106,5 +93,7 @@ public class Yazarlar extends AppCompatActivity {
         jsonForGetRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         AppController.getInstance().addToRequestQueue(jsonForGetRequest);
+
+
     }
 }

@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Intent i = new Intent(Login.this,Yazarlar.class);
+                                    Intent i = new Intent(Login.this,Paylasimlar.class);
                                     startActivity(i);
                                     Toast.makeText(getApplicationContext(),"Giriş Başarılı.", Toast.LENGTH_LONG).show();
 
