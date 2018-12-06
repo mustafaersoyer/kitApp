@@ -3,6 +3,9 @@ package com.example.mstfa.kitapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,28 +27,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Paylasimlar extends AppCompatActivity {
-    TextView txtPaylasimBaslik,txtPaylasimKitapAdi,txtPaylasimAciklama;
+    TextView txtPaylasimBaslik, txtPaylasimKitapAdi, txtPaylasimAciklama;
     Button btnYazarlar;
+    RecyclerView recyclerView;
+    PaylasimAdapter paylasimAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paylasimlar);
 
-        txtPaylasimAciklama = (TextView) findViewById(R.id.txtPaylasimAciklama);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        Paylasim paylasim = new Paylasim();
+        recyclerView = (RecyclerView) findViewById(R.id.rc);
+        paylasimAdapter = new PaylasimAdapter(this, paylasim.getData());
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(paylasimAdapter);
+          recyclerView.setLayoutManager(linearLayoutManager);
+
+       /* txtPaylasimAciklama = (TextView) findViewById(R.id.txtPaylasimAciklama);
         txtPaylasimBaslik = (TextView) findViewById(R.id.txtPaylasimBaslik);
         txtPaylasimKitapAdi = (TextView) findViewById(R.id.txtPaylasimKitapAdi);
-        btnYazarlar = (Button) findViewById(R.id.btnYazarlar);
+        btnYazarlar = (Button) findViewById(R.id.btnYazarlar);*/
 
-        btnYazarlar.setOnClickListener(new View.OnClickListener() {
+       /* btnYazarlar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Paylasimlar.this,Yazarlar.class);
+                Intent i = new Intent(Paylasimlar.this, Yazarlar.class);
                 startActivity(i);
             }
-        });
+        });*/
 
-        StringRequest jsonForGetRequest = new StringRequest(
+        /*StringRequest jsonForGetRequest = new StringRequest(
                 Request.Method.GET,"http://192.168.1.102:80/kitapp/paylasim.php?",
                 new Response.Listener<String>() {
                     @Override
@@ -107,5 +122,6 @@ public class Paylasimlar extends AppCompatActivity {
         jsonForGetRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         AppController.getInstance().addToRequestQueue(jsonForGetRequest);
+    }*/
     }
 }

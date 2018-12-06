@@ -21,6 +21,7 @@
         <activity android:name=".Yazarlar"></activity>
         <activity android:name=".Kitaplar"></activity>
         <activity android:name=".Paylasimlar"></activity>
+
     </application>
 
 </manifest>
